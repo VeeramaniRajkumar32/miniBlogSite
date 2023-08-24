@@ -1,0 +1,30 @@
+{
+  "name": "miniblogsite",
+  "version": "1.0.0",
+  "description": "sample blog site",
+  "main": "./backend/server.js",
+  "scripts": {
+    "start": "./backend/server.js",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VeeramaniRajkumar32/miniBlogSite.git"
+  },
+  "author": "Veeramani Rajkumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VeeramaniRajkumar32/miniBlogSite/issues"
+  },
+  "homepage": "https://github.com/VeeramaniRajkumar32/miniBlogSite#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
