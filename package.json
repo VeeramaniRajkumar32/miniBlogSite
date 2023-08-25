@@ -4,8 +4,9 @@
   "description": "sample blog site",
   "main": "./backend/server.js",
   "scripts": {
-    "start": "./backend/server.js",
-    "dev": "nodemon"
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/VeeramaniRajkumar32/miniBlogSite#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
