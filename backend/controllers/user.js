@@ -33,7 +33,7 @@ const register = async (req, res) => {
 								name:loginResult[0].name, 
 								email: userName,
 								token: token,
-								message: "ok",
+								message: "success",
 								status: true,
 							});
 						}

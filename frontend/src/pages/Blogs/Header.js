@@ -32,7 +32,7 @@ export const Header = () => {
         <p className="tm-mb-80 pr-5 text-white">
             Xtra Blog is a multi-purpose HTML template from TemplateMo website. Left side is a sticky menu bar. Right side content will scroll up and down.
         </p>
-        <button type="button" class="btn btn-secondary" onClick={()=>{localStorage.clear();navigate("/login")}}>Logout</button>
+        <button type="button" class="btn btn-danger" onClick={()=>{localStorage.clear();navigate("/login")}}>Logout</button>
     </div>
     </header></div>
   )
