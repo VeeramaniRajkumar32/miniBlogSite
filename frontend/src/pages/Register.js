@@ -93,7 +93,7 @@ export const Register = () => {
 				<button
 				  type="submit"
 				//   onClick={() => navigate("/login")}
-				  class="btn btn-dark w-100"
+				  className="btn btn-dark w-100"
 				>
 				  Submit
 				</button>

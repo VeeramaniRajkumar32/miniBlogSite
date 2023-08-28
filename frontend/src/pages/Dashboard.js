@@ -1,15 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Header } from "./Blogs/Header";
 import { BlogHome } from "./Blogs/BlogHome";
 
 function Dashboard() {
   const navigate = useNavigate();
-  // const user = ""
-
-  // To retrieve data
-  const user = localStorage.getItem("user");
+  const [user, setUser] = useState([])
   useEffect(() => {
+	  const user = localStorage.getItem("user");
+	  setUser(user)
 	if (!user) {
 	  navigate("/login");
 	}
@@ -19,11 +17,8 @@ function Dashboard() {
 	<>
 	  <div className="container">
 		<div className="row">
-		  <div className="col-3">
-			<Header />
-		  </div>
-		  <div className="col-9">
-			<BlogHome />
+		  <div className="col-12">
+			<BlogHome user={user} />
 		  </div>
 		</div>
 	  </div>

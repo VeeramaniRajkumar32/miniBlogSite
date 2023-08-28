@@ -1,15 +1,11 @@
 import React from "react";
-import { Header } from "./Header";
 import { TopBar } from "./TopBar";
 
-export const SingalPost = () => {
+export const SingalPost = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-3">
-          <Header />
-        </div>
-        <div className="col-9">
+        <div className="col-12">
             <TopBar />
           <div className="row tm-row">
             <div className="col-12 mt-5">

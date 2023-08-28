@@ -7,14 +7,14 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { TopBar } from './TopBar';
 import { ListBlog } from './ListBlog';
 
-export const BlogHome = () => {
+export const BlogHome = (props) => {
     const API_URL = 'http://localhost:7000/api'
     const postSchema = Yup.object().shape({
         title: Yup.string().required("Required"),
         content: Yup.string().required("Required"),
     })
     const createPost = async(value) => {
-        const user = localStorage.getItem('user');
+        const user = props;
         const userObj = JSON.parse(user)
         const token = userObj.token;
         const headers = {
@@ -41,9 +41,9 @@ export const BlogHome = () => {
     return (
         <>
             <div className="container-fluid">
-                <TopBar/>
+                <TopBar user={props} />
                 <div style={{ display: 'flex', justifyContent: 'end', paddingTop: '10px' }}>
-                    <button type="button" onClick={() => toggle()} class="btn btn-primary" >Create Post
+                    <button type="button" onClick={() => toggle()} className="btn btn-primary" >Create Post
                     </button>
                 </div>
                 <ListBlog />
