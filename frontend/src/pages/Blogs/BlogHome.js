@@ -14,8 +14,11 @@ export const BlogHome = (props) => {
         content: Yup.string().required("Required"),
     })
     const createPost = async(value) => {
-        const user = props;
+        console.log(value);
+        const user = props.user;
+        console.log(props);
         const userObj = JSON.parse(user)
+        console.log(userObj);
         const token = userObj.token;
         const headers = {
             'Content-Type': 'application/json',
@@ -28,6 +31,7 @@ export const BlogHome = (props) => {
         .then((response) => {
             if(response.data.status){
                 console.log({response});
+                toggle()
             }
         })
         .catch((error) => {
@@ -46,7 +50,7 @@ export const BlogHome = (props) => {
                     <button type="button" onClick={() => toggle()} className="btn btn-primary" >Create Post
                     </button>
                 </div>
-                <ListBlog />
+                <ListBlog modal={modal}/>
             </div>
             <Modal isOpen={modal} toggle={toggle} >
                 <Formik

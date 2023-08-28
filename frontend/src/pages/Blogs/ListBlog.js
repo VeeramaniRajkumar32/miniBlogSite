@@ -17,7 +17,7 @@ function formatDate(date) {
     return [day, month, year].join('-');
 }
 
-export const ListBlog = () => {
+export const ListBlog = ({modal}) => {
 	const navigate = useNavigate();
 	const [data, setData] = useState([])
 	const user = localStorage.getItem('user');
@@ -33,7 +33,7 @@ export const ListBlog = () => {
 				navigate('/login')
 			}
 			fetchData();
-		}, []);
+		}, [modal]);
 	const fetchData = async () => {
 		const result = await axios.get(API_URL + '/post/list',{
 		headers: headers
