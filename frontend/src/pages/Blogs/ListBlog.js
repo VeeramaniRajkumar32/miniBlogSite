@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import axios from 'axios'
 const API_URL = "http://localhost:7000/api";
 
@@ -21,7 +21,6 @@ export const ListBlog = ({modal}) => {
 	const navigate = useNavigate();
 	const [data, setData] = useState([])
 	const user = localStorage.getItem('user');
-	
 	const userObj = JSON.parse(user)
 	const token = (userObj.token) ? userObj.token : '' ;
 	const headers = {
@@ -52,23 +51,16 @@ export const ListBlog = ({modal}) => {
 	  {data.map((data,i) => {
 		return (
 			<div key={i} className="col-sm-6">
-				<a onClick={() => navigate("/post/list/"+data.id)} rel="nofollow" target="_target" className="effect-lily tm-post-link tm-pt-60">
-					<div className=" tm-post-link-inner">
-					<img src="img/img-02.jpg" alt="Image" className="img-fluid" />
+				<div  rel="nofollow"  className="effect-lily tm-post-link tm-pt-60">
+					<div className="tm-post-link-inner">
+						<img src="img/img-02.jpg" alt="Image" className="img-fluid" />
 					</div>
 					<span className="position-absolute tm-new-badge">New</span>
-					<h2 className="tm-pt-30 tm-color-primary tm-post-title">
+				</div>
+					<h2 onClick={() => navigate("/post/list/"+data.id,{state:data.id})} className="tm-pt-30 tm-post-link tm-color-primary tm-post-title">
 					{data.title}
 					</h2>
-				</a>
 				<p className="tm-pt-30">
-					<a
-					rel="nofollow"
-					onClick={() => navigate("/post/list/"+data.id)}
-					target="_blank"
-					>
-					Xtra Blog
-					</a>{" "}
 					{data.content}
 				</p>
 				<div className="d-flex justify-content-between tm-pt-45">
