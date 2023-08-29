@@ -9,7 +9,6 @@ const getPost = async (req, res) => {
 	  } else {
 		sql = `SELECT * FROM posts`;
 	  }
-	  console.log(sql);
 	  await conn.query(sql, async (err, result) => {
 		if (result.length) {
 		  res.json({

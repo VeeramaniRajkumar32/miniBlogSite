@@ -14,11 +14,8 @@ export const BlogHome = (props) => {
         content: Yup.string().required("Required"),
     })
     const createPost = async(value) => {
-        console.log(value);
         const user = props.user;
-        console.log(props);
         const userObj = JSON.parse(user)
-        console.log(userObj);
         const token = userObj.token;
         const headers = {
             'Content-Type': 'application/json',

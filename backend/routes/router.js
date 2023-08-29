@@ -13,18 +13,22 @@ router.route('/').get((ree,res) =>{
 router.route('/register').post(register);
 router.route('/login').post(login);
 router.route('/user').get(users)
-//post
-router.get('/post/list',verifyToken,getPost)
-router.get('/post/list/:id',verifyToken,getPost)
-router.post('/post/create',verifyToken,createPost)
-router.put('/post/:id',verifyToken,updatePost)
-router.delete('/post/:id',verifyToken,deletePost)
-//Comment
 
-router.get('/comment/list',verifyToken,getComment)
-router.get('/comment/list/:id',verifyToken,getComment)
-router.post('/comment/create',verifyToken,createComment)
-router.put('/comment/:id',verifyToken,updateComment)
-router.delete('/comment/:id',verifyToken,deleteComment)
+//use verified path middle ware
+router.use(verifyToken)
+
+//post
+router.get('/post/list',getPost)
+router.get('/post/list/:id',getPost)
+router.post('/post/create',createPost)
+router.put('/post/:id',updatePost)
+router.delete('/post/:id',deletePost)
+
+//Comment
+router.get('/comment/list',getComment)
+router.get('/comment/list/:id',getComment)
+router.post('/comment/create',createComment)
+router.put('/comment/:id',updateComment)
+router.delete('/comment/:id',deleteComment)
 
 module.exports = router
