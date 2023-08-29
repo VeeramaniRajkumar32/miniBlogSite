@@ -8,9 +8,9 @@ function Dashboard() {
   useEffect(() => {
 	  const user = localStorage.getItem("user");
 	  setUser(user)
-	if (!user) {
-	  navigate("/login");
-	}
+	  if (!user) {
+		navigate("/login");
+	  }
   }, [user]);
 
   return (

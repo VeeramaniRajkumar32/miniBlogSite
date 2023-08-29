@@ -24,27 +24,20 @@ const register = async (req, res) => {
 					const hashedPassword = await bcrypt.hash(password, salt);
 					const insert = `INSERT INTO login (name,password,email,role) VALUES ('${name}','${hashedPassword}','${userName}', '1')`;
 					await conn.query(insert)
-					try {
-						let sql = `SELECT * FROM login WHERE email='${userName}'`;
-						await conn.query(sql, async (err, loginResult) => {
-							const token = generateJwtToken({id: loginResult[0].id, name:loginResult[0].name, email: userName});
-							if (token) {
-								return res.status(200).json({
-									id: loginResult[0].id, 
-									name:loginResult[0].name, 
-									email: userName,
-									token: token,
-									message: "success",
-									status: true,
-								});
-							}
-						})
-					} catch (error) {
-						return res.status(400).json({
-							message: error.message,
-							status: false,
-						});
-					}
+					let sql = `SELECT * FROM login WHERE email='${userName}'`;
+					await conn.query(sql, async (err, loginResult) => {
+						const token = generateJwtToken({id: loginResult[0].id, name:loginResult[0].name, email: userName});
+						if (token) {
+							return res.status(200).json({
+								id: loginResult[0].id, 
+								name:loginResult[0].name, 
+								email: userName,
+								token: token,
+								message: "success",
+								status: true,
+							});
+						}
+					})
 				}
 			});
 		});
